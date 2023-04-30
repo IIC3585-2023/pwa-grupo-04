@@ -1,0 +1,127 @@
+:root {
+  --text-color: #2e1065;
+  --light-bg-color: #f3f4f6;
+  --dark-bg-color: #111827;
+  --button-color: #654ef0;
+  --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+  --size-toggle-switch: 28px;
+}
+
+body {
+  color: var(--light-text-color);
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-bg-color);
+}
+
+.icon {
+  width: 50px;
+  aspect-ratio: 1/1;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 5px 0;
+}
+
+.logo-title {
+  background: linear-gradient(90deg, #00b0ff, #d500f9);
+  font-size: 1.5rem;
+  font-weight: 700;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: var(--size-toggle-switch);
+  aspect-ratio: 60/34;
+  margin: 0 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark-bg-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: calc(var(--size-toggle-switch) - 8px);
+  width: calc(var(--size-toggle-switch) - 8px);
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--light-bg-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.content-switch{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-switch{
+    width: 17px;
+    aspect-ratio: 1/1;
+    margin: 0 4px;
+}
+
+input:checked + .slider {
+  background-color: var(--light-bg-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--light-bg-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(calc(var(--size-toggle-switch) - 8px));
+  -ms-transform: translateX(calc(var(--size-toggle-switch) - 8px));
+  transform: translateX(calc(var(--size-toggle-switch) - 8px));
+  background-color: var(--dark-bg-color);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: var(--size-toggle-switch);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

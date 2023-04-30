@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rydeen</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="public/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="public/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="public/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="public/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="public/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="public/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="public/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="public/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="public/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="public/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="public/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="public/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="public/favicon-16x16.png"
+    />
+
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <span>v0.0.1</span>
+      <div class="row-container">
+        <img src="assets/icon.png" alt="Rydeen" class="icon" />
+        <span class="logo-title">Rydeen</span>
+      </div>
+      <div class="row-container">
+        <button>Settings</button>
+        <label class="switch">
+          <input type="checkbox" id="switch" onclick="" />
+          <span class="slider round content-switch">
+            <img src="assets/moon.svg" alt="moon" class="icon-switch" />
+            <img src="assets/sun.svg" alt="sun" class="icon-switch" />
+          </span>
+        </label>
+      </div>
+    </nav>
+  </body>
+
+  <script>
+    // https://www.freecodecamp.org/news/397b72168040/
+    window.addEventListener("load", async (e) => {
+      if ("serviceWorker" in navigator) {
+        try {
+          navigator.serviceWorker.register("serviceWorker.js");
+          console.log("SW registered");
+        } catch (error) {
+          console.log("SW failed");
+        }
+      }
+    });
+  </script>
+</html>
