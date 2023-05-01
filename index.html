@@ -149,7 +149,7 @@
       <form
         class="row-container"
         id="form-add-task"
-        onsubmit="addTask(this); return false;"
+        onsubmit="try{addTask(this); return false;} catch(e){console.log(e);return false}"
       >
         <input
           type="text"
@@ -157,8 +157,9 @@
           placeholder="Add Task"
           class="input-task"
           name="name-task"
-          required
           aria-label="Add Task"
+          autocomplete="off"
+          required
         />
         <input
           type="text"
@@ -167,6 +168,7 @@
           class="input-task"
           name="tags-task"
           aria-label="Tags"
+          autocomplete="off"
           required
         />
         <button
