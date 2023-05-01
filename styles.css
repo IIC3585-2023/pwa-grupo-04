@@ -1,8 +1,10 @@
 :root {
-  --text-color: #2e1065;
+  --light-text-color: #2e1065;
+  --dark-text-color: #f3f4f6;
   --light-bg-color: #f3f4f6;
   --dark-bg-color: #111827;
   --button-color: #654ef0;
+  --border-color: #e5e7eb;
   --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
@@ -17,6 +19,15 @@ body {
   align-items: center;
   justify-content: center;
   background-color: var(--light-bg-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .icon {
@@ -37,8 +48,9 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 95%;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--border-color);
   padding: 5px 0;
+  margin-bottom: 20px;
 }
 
 .logo-title {
@@ -89,17 +101,18 @@ body {
   transition: 0.4s;
 }
 
-.content-switch{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.content-switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
-.icon-switch{
-    width: 17px;
-    aspect-ratio: 1/1;
-    margin: 0 4px;
+.icon-switch {
+  width: 17px;
+  aspect-ratio: 1/1;
+  margin: 0 4px;
 }
 
 input:checked + .slider {
@@ -124,4 +137,132 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.input-task {
+  padding: 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.button-add-task {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--button-color);
+  color: var(--dark-text-color);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-add-task:hover {
+  filter: brightness(1.1);
+}
+
+.icon-size {
+  width: 25px;
+  aspect-ratio: 1/1;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab {
+  all: unset;
+  border-bottom: 2px solid var(--border-color);
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--button-color);
+  border-bottom: 2px solid var(--button-color);
+}
+
+.active {
+  color: var(--button-color);
+  border-bottom: 2px solid var(--button-color);
+  cursor: default;
+}
+
+#button-config-tasks {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.select-all-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  aspect-ratio: 1/1;
+  accent-color: var(--button-color);
+  cursor: pointer;
+}
+
+.row-task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tag-task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 5px;
+  margin: 2px;
+  background-color: var(--button-color);
+  font-size: small;
+  color: whitesmoke;
+}
+
+.grid-size {
+  width: calc(1 / 3 * 100%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

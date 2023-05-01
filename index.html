@@ -91,7 +91,7 @@
         <span class="logo-title">Rydeen</span>
       </div>
       <div class="row-container">
-        <button>Settings</button>
+        <!-- <button>Settings</button> -->
         <label class="switch">
           <input type="checkbox" id="switch" onclick="" />
           <span class="slider round content-switch">
@@ -101,6 +101,62 @@
         </label>
       </div>
     </nav>
+    <main>
+      <section class="row-container" style="gap: 30px">
+        <div class="tabs">
+          <button class="tab active" id="tab-all">All</button>
+          <button class="tab" id="tab-star">Starred</button>
+          <button class="tab" id="tab-unstar">Unstarred</button>
+        </div>
+        <button id="button-config-tasks">
+          <img src="assets/dots.svg" alt="dots" class="icon-size" />
+        </button>
+      </section>
+      <section class="row-container">
+        <input
+          type="text"
+          id="add-task"
+          placeholder="Add Task"
+          class="input-task"
+        />
+        <input
+          type="text"
+          id="add-tags"
+          placeholder="Tags"
+          class="input-task"
+        />
+        <button class="button-add-task" id="button-add-task">
+          <img src="assets/plus.svg" alt="plus" class="icon-size" />
+        </button>
+      </section>
+      <section class="select-all-container">
+        <div class="grid-size">
+          Select All
+          <input type="checkbox" id="select-all" style="margin-left: 10px" />
+        </div>
+        <span class="grid-size">Name</span>
+        <span class="grid-size">Tags</span>
+      </section>
+      <section class="tasks-list">
+        <div class="row-task">
+          <input class="grid-size" type="checkbox" id="task-1" />
+          <span class="name-task grid-size">Example Task</span>
+          <div class="tags-container grid-size">
+            <span class="tag-task">Tag 1</span>
+            <span class="tag-task">Tag 2</span>
+            <span class="tag-task">Tag 3</span>
+          </div>
+        </div>
+        <div class="row-task">
+          <input class="grid-size" type="checkbox" id="task-1" />
+          <span class="name-task grid-size">CR7</span>
+          <div class="tags-container grid-size">
+            <span class="tag-task">Bicho</span>
+            <span class="tag-task">Siuu</span>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 
   <script>
