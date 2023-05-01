@@ -190,6 +190,12 @@
       <section class="tasks-list" id="tasks-list"></section>
     </main>
   </body>
+  <script src="src/index.js"></script>
+  <script>
+    if (localStorage.getItem("colorMode") === "dark") {
+      document.getElementById("switch").checked = true;
+    }
+  </script>
   <script>
     // https://www.freecodecamp.org/news/397b72168040/
     window.addEventListener("load", async (e) => {
@@ -202,11 +208,5 @@
         }
       }
     });
-  </script>
-  <script src="src/app.js"></script>
-  <script>
-    if (localStorage.getItem("colorMode") === "dark") {
-      document.getElementById("switch").checked = true;
-    }
   </script>
 </html>

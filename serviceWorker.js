@@ -1,12 +1,12 @@
 // https://www.freecodecamp.org/news/397b72168040/
 // https://medium.com/@jranand_io/7705bcd3d6cb
 
-const CACHE_NAME = 'rydeen-cache-v1';
+const CACHE_NAME = "rydeen-cache-v1";
 
 const staticAssets = [
   "./",
   "./styles.css",
-  "./src/app.js",
+  "./src/index.js",
   "./assets/icon.png",
   "./assets/dots.svg",
   "./assets/plus.svg",
@@ -29,6 +29,18 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      );
+    })
+  );
+});
+
 async function cacheData(request) {
   const cachedResponse = await caches.match(request);
   return cachedResponse || fetch(request);
@@ -46,4 +58,4 @@ async function networkFirst(request) {
   }
 }
 
-console.log('SW script loaded');
+console.log("SW script loaded");
