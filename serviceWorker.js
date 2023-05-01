@@ -7,6 +7,10 @@ const staticAssets = [
   "./styles.css",
   "./src/app.js",
   "./assets/icon.png",
+  "./assets/dots.svg",
+  "./assets/plus.svg",
+  "./assets/moon.svg",
+  "./assets/sun.svg",
 ];
 
 self.addEventListener("install", async (event) => {
