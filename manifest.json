@@ -8,22 +8,6 @@
       "type": "image/png"
     },
     {
-      "src": "assets/dots.svg",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "assets/plus.svg",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "assets/moon.svg",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "assets/sun.svg",
-      "type": "image/svg+xml"
-    },
-    {
       "src": "public/android-icon-36x36.png",
       "sizes": "36x36",
       "type": "image/png",

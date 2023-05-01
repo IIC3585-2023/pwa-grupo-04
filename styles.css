@@ -1,24 +1,29 @@
 :root {
-  --light-text-color: #2e1065;
-  --dark-text-color: #f3f4f6;
-  --light-bg-color: #f3f4f6;
-  --dark-bg-color: #111827;
   --button-color: #654ef0;
-  --border-color: #e5e7eb;
+  --main-border-color: #e5e7eb;
+  --main-bg-color: #f3f4f6;
+  --main-text-color: #2e1065;
   --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   --size-toggle-switch: 28px;
+  
+  --light-text-color: #2e1065;
+  --dark-text-color: #f3f4f6;
+  --light-bg-color: #f3f4f6;
+  --dark-bg-color: #111827;
+  --light-border-color: #e5e7eb;
+  --dark-border-color: #4b5563;
 }
 
 body {
-  color: var(--light-text-color);
+  color: var(--main-text-color);
   font-family: var(--font-family);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--light-bg-color);
+  background-color: var(--main-bg-color);
 }
 
 main {
@@ -48,7 +53,7 @@ main {
   align-items: center;
   justify-content: space-between;
   width: 95%;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--main-border-color);
   padding: 5px 0;
   margin-bottom: 20px;
 }
@@ -141,7 +146,7 @@ input:checked + .slider:before {
 
 .input-task {
   padding: 10px;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--main-border-color);
   border-radius: 5px;
   margin: 10px 0;
 }
@@ -151,7 +156,7 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--main-border-color);
   border-radius: 5px;
   padding: 5px;
   background-color: var(--button-color);

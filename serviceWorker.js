@@ -1,4 +1,5 @@
 // https://www.freecodecamp.org/news/397b72168040/
+// https://medium.com/@jranand_io/7705bcd3d6cb
 
 const CACHE_NAME = 'rydeen-cache-v1';
 

@@ -76,12 +76,46 @@
       sizes="16x16"
       href="public/favicon-16x16.png"
     />
+    <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon" />
 
     <link rel="manifest" href="/manifest.json" />
 
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      const color = (theme) => (attr) => `--${theme}-${attr}-color`;
+      const dark = color("dark");
+      const light = color("light");
+      const attrs = ["bg", "text", "border"];
+
+      function changeTheme(theme) {
+        const root = document.querySelector(":root");
+        const colorMode = theme === "dark" ? dark : light;
+        attrs.forEach((attr) => {
+          root.style.setProperty(
+            color("main")(attr),
+            getColorFromRoot(colorMode(attr))
+          );
+        });
+      }
+
+      function switchButton() {
+        const button = document.getElementById("switch");
+        const theme = button.checked ? "dark" : "light";
+        changeTheme(theme);
+        localStorage.setItem("colorMode", theme);
+      }
+
+      function getColorFromRoot(variable) {
+        return getComputedStyle(document.documentElement).getPropertyValue(
+          variable
+        );
+      }
+      if (localStorage.getItem("colorMode")) {
+        changeTheme(localStorage.getItem("colorMode"));
+      }
+    </script>
   </head>
   <body>
     <nav class="navbar">
@@ -93,7 +127,7 @@
       <div class="row-container">
         <!-- <button>Settings</button> -->
         <label class="switch">
-          <input type="checkbox" id="switch" onclick="" />
+          <input type="checkbox" id="switch" onclick="switchButton()" />
           <span class="slider round content-switch">
             <img src="assets/moon.svg" alt="moon" class="icon-switch" />
             <img src="assets/sun.svg" alt="sun" class="icon-switch" />
@@ -112,23 +146,37 @@
           <img src="assets/dots.svg" alt="dots" class="icon-size" />
         </button>
       </section>
-      <section class="row-container">
+      <form
+        class="row-container"
+        id="form-add-task"
+        onsubmit="addTask(this); return false;"
+      >
         <input
           type="text"
           id="add-task"
           placeholder="Add Task"
           class="input-task"
+          name="name-task"
+          required
+          aria-label="Add Task"
         />
         <input
           type="text"
           id="add-tags"
           placeholder="Tags"
           class="input-task"
+          name="tags-task"
+          aria-label="Tags"
+          required
         />
-        <button class="button-add-task" id="button-add-task">
+        <button
+          class="button-add-task"
+          id="button-add-task"
+          aria-label="Add Task Button"
+        >
           <img src="assets/plus.svg" alt="plus" class="icon-size" />
         </button>
-      </section>
+      </form>
       <section class="select-all-container">
         <div class="grid-size">
           Select All
@@ -137,28 +185,9 @@
         <span class="grid-size">Name</span>
         <span class="grid-size">Tags</span>
       </section>
-      <section class="tasks-list">
-        <div class="row-task">
-          <input class="grid-size" type="checkbox" id="task-1" />
-          <span class="name-task grid-size">Example Task</span>
-          <div class="tags-container grid-size">
-            <span class="tag-task">Tag 1</span>
-            <span class="tag-task">Tag 2</span>
-            <span class="tag-task">Tag 3</span>
-          </div>
-        </div>
-        <div class="row-task">
-          <input class="grid-size" type="checkbox" id="task-1" />
-          <span class="name-task grid-size">CR7</span>
-          <div class="tags-container grid-size">
-            <span class="tag-task">Bicho</span>
-            <span class="tag-task">Siuu</span>
-          </div>
-        </div>
-      </section>
+      <section class="tasks-list" id="tasks-list"></section>
     </main>
   </body>
-
   <script>
     // https://www.freecodecamp.org/news/397b72168040/
     window.addEventListener("load", async (e) => {
@@ -171,5 +200,11 @@
         }
       }
     });
+  </script>
+  <script src="src/app.js"></script>
+  <script>
+    if (localStorage.getItem("colorMode") === "dark") {
+      document.getElementById("switch").checked = true;
+    }
   </script>
 </html>
