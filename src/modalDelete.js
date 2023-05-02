@@ -11,12 +11,3 @@ function selectAllTasks() {
     }
   }
 }
-
-function showConfig() {
-  const modal = document.getElementById("modal-delete");
-  if (modal.style.display === "flex") {
-    modal.style.display = "none";
-  } else {
-    modal.style.display = "flex";
-  }
-}

@@ -308,6 +308,10 @@ input[type="checkbox"] {
   position: relative;
 }
 
+#button-config-tasks:focus + #modal-delete {
+  display: flex;
+}
+
 #modal-delete {
   display: none;
   flex-direction: column;
@@ -321,6 +325,14 @@ input[type="checkbox"] {
   border-radius: 0.5rem;
   border: 1px solid var(--main-border-color);
   box-shadow: 0 0 10px var(--main-border-color);
+}
+
+#modal-delete:hover {
+  display: flex;
+}
+
+#modal-delete:focus-within {
+  display: flex;
 }
 
 .button-delete {
