@@ -162,11 +162,6 @@ input:checked + .slider:before {
   color: var(--main-text-color);
 }
 
-@media (max-width: 600px) {
-  .input-task {
-    width: 120px;
-  }
-}
 
 .input-task:focus {
   outline: none;
@@ -332,4 +327,14 @@ input[type="checkbox"] {
 .button-delete{
   background-color: var(--button-delete-color);
   font-weight: 500;
+}
+
+
+@media (max-width: 600px) {
+  .input-task {
+    width: 120px;
+  }
+  #modal-delete {
+    right: 0;
+  }
 }
