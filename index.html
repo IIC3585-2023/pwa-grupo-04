@@ -87,7 +87,7 @@
       const color = (theme) => (attr) => `--${theme}-${attr}-color`;
       const dark = color("dark");
       const light = color("light");
-      const attrs = ["bg", "text", "border"];
+      const attrs = ["bg", "text", "border", "input", "checkbox-opacity"];
 
       function changeTheme(theme) {
         const root = document.querySelector(":root");
