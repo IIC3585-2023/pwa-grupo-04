@@ -64,9 +64,10 @@ function addTask(form) {
 
   formObj["tags-task"] = formObj["tags-task"].split(",");
 
+  idTasks++;
   if (verifyForm(formObj)) {
     let htmlRow = `
-        <div class="row-task" id="task-${idTasks + 1}">
+        <div class="row-task" id="task-${idTasks}">
           <input class="grid-size" type="checkbox" />
           <span class="name-task grid-size">${formObj["name-task"]}</span>
           <div class="tags-container grid-size">
