@@ -13,6 +13,7 @@ function selectAllTasks() {
 }
 
 function deleteSelectedTasks() {
+  document.getElementById("select-all").checked = false;
   const tasksList = document.getElementById("tasks-list").children;
   // remove from the end to the beginning
   for (let i = tasksList.length - 1; i >= 0; i--) {
