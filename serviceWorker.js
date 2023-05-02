@@ -7,6 +7,7 @@ const staticAssets = [
   "./",
   "./styles.css",
   "./src/index.js",
+  "./src/darkMode.js",
   "./assets/icon.png",
   "./assets/dots.svg",
   "./assets/plus.svg",

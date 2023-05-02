@@ -1,5 +1,7 @@
 :root {
-  --button-color: #654ef0;
+  --button-color: #8b5cf6;
+  --button-delete-color: #f43f5e;
+  --tag-color: #d946ef;
   --main-border-color: #e5e7eb;
   --main-bg-color: #f3f4f6;
   --main-text-color: #2e1065;
@@ -171,7 +173,7 @@ input:checked + .slider:before {
   border: 2px solid var(--button-color);
 }
 
-.button-add-task {
+.button {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -186,8 +188,8 @@ input:checked + .slider:before {
   transition: all 0.2s ease-in-out;
 }
 
-.button-add-task:hover {
-  filter: brightness(1.1);
+.button:hover {
+  filter: brightness(1.2);
 }
 
 .icon-size {
@@ -228,6 +230,10 @@ input:checked + .slider:before {
   padding: 0;
 }
 
+#button-config-tasks:hover {
+  filter: brightness(1.2);
+}
+
 .select-all-container {
   display: flex;
   flex-direction: row;
@@ -238,6 +244,10 @@ input:checked + .slider:before {
   font-weight: 600;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--main-border-color);
+}
+
+#form-add-task{
+  margin: 20px 0;
 }
 
 input[type="checkbox"]:not(:checked) {
@@ -257,7 +267,8 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--main-border-color);
 }
 
 .tasks-list {
@@ -285,7 +296,7 @@ input[type="checkbox"] {
   border-radius: 0.5rem;
   padding: 5px;
   margin: 2px;
-  background-color: var(--button-color);
+  background-color: var(--tag-color);
   font-size: small;
   color: whitesmoke;
 }
@@ -297,4 +308,28 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.modal-container{
+  position: relative;
+}
+
+#modal-delete{
+  display: none;
+  flex-direction:column;
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  background-color: var(--main-bg-color);
+  margin-top: 10px;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--main-border-color);
+  box-shadow: 0 0 10px var(--main-border-color);
+}
+
+.button-delete{
+  background-color: var(--button-delete-color);
+  font-weight: 500;
 }
