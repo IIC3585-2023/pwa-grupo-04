@@ -262,7 +262,11 @@ input[type="checkbox"] {
   justify-content: space-around;
   width: 100%;
   padding: 10px 0;
-  border-bottom: 1px solid var(--main-border-color);
+  background-color: var(--main-input-color);
+  border-radius: 0.5rem;
+  margin: 5px 0;
+  box-shadow: 0 0 5px var(--main-border-color);
+  /* border-bottom: 1px solid var(--main-border-color); */
 }
 
 .tasks-list {
@@ -318,7 +322,7 @@ input[type="checkbox"] {
   position: absolute;
   text-align: center;
   width: 150px;
-  background-color: var(--main-bg-color);
+  background-color: var(--main-input-color);
   margin-top: 10px;
   padding: 10px;
   gap: 10px;
