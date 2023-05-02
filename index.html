@@ -83,39 +83,8 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
-    <script>
-      const color = (theme) => (attr) => `--${theme}-${attr}-color`;
-      const dark = color("dark");
-      const light = color("light");
-      const attrs = ["bg", "text", "border", "input", "checkbox-opacity"];
-
-      function changeTheme(theme) {
-        const root = document.querySelector(":root");
-        const colorMode = theme === "dark" ? dark : light;
-        attrs.forEach((attr) => {
-          root.style.setProperty(
-            color("main")(attr),
-            getColorFromRoot(colorMode(attr))
-          );
-        });
-      }
-
-      function switchButton() {
-        const button = document.getElementById("switch");
-        const theme = button.checked ? "dark" : "light";
-        changeTheme(theme);
-        localStorage.setItem("colorMode", theme);
-      }
-
-      function getColorFromRoot(variable) {
-        return getComputedStyle(document.documentElement).getPropertyValue(
-          variable
-        );
-      }
-      if (localStorage.getItem("colorMode")) {
-        changeTheme(localStorage.getItem("colorMode"));
-      }
-    </script>
+    <script src="src/darkMode.js"></script>
+    <script src="src/modalDelete.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -142,9 +111,15 @@
           <button class="tab" id="tab-star">Starred</button>
           <button class="tab" id="tab-unstar">Unstarred</button>
         </div>
-        <button id="button-config-tasks">
-          <img src="assets/dots.svg" alt="dots" class="icon-size" />
-        </button>
+        <div class="modal-container">
+          <button id="button-config-tasks">
+            <img src="assets/dots.svg" alt="dots" class="icon-size" />
+          </button>
+          <div id="modal-delete">
+            <label>Delete selected Tasks?</label>
+            <button class="button button-delete" onclick="deleteSelectedTasks()">Delete</button>
+          </div>
+        </div>
       </section>
       <form
         class="row-container"
@@ -172,7 +147,7 @@
           required
         />
         <button
-          class="button-add-task"
+          class="button"
           id="button-add-task"
           aria-label="Add Task Button"
         >
@@ -181,8 +156,14 @@
       </form>
       <section class="select-all-container">
         <div class="grid-size">
-          Select All
-          <input type="checkbox" id="select-all" style="margin-left: 10px" />
+          <label> Select All </label>
+          <input
+            type="checkbox"
+            id="select-all"
+            style="margin-left: 10px"
+            aria-label="checkbox select-all"
+            onchange="selectAllTasks()"
+          />
         </div>
         <span class="grid-size">Name</span>
         <span class="grid-size">Tags</span>
