@@ -3,6 +3,8 @@
   --main-border-color: #e5e7eb;
   --main-bg-color: #f3f4f6;
   --main-text-color: #2e1065;
+  --main-input-color: white;
+  --main-checkbox-opacity-color: 1;
   --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
@@ -12,8 +14,12 @@
   --dark-text-color: #f3f4f6;
   --light-bg-color: #f3f4f6;
   --dark-bg-color: #111827;
-  --light-border-color: #e5e7eb;
-  --dark-border-color: #4b5563;
+  --light-border-color: #d1d5db;
+  --dark-border-color: #334155;
+  --ligth-input-color: white;
+  --dark-input-color: #0e1421;
+  --light-checkbox-opacity-color: 1;
+  --dark-checkbox-opacity-color: 0.2;
 }
 
 body {
@@ -62,6 +68,7 @@ main {
   background: linear-gradient(90deg, #00b0ff, #d500f9);
   font-size: 1.5rem;
   font-weight: 700;
+  background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -149,6 +156,19 @@ input:checked + .slider:before {
   border: 2px solid var(--main-border-color);
   border-radius: 5px;
   margin: 10px 0;
+  background-color: var(--main-input-color);
+  color: var(--main-text-color);
+}
+
+@media (max-width: 600px) {
+  .input-task {
+    width: 120px;
+  }
+}
+
+.input-task:focus {
+  outline: none;
+  border: 2px solid var(--button-color);
 }
 
 .button-add-task {
@@ -184,7 +204,7 @@ input:checked + .slider:before {
 
 .tab {
   all: unset;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--main-border-color);
   padding: 10px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -202,6 +222,7 @@ input:checked + .slider:before {
 }
 
 #button-config-tasks {
+  background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
@@ -215,6 +236,12 @@ input:checked + .slider:before {
   width: 100%;
   margin: 10px 0;
   font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--main-border-color);
+}
+
+input[type="checkbox"]:not(:checked) {
+  filter: opacity(var(--main-checkbox-opacity-color));
 }
 
 input[type="checkbox"] {
@@ -254,7 +281,7 @@ input[type="checkbox"] {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--main-border-color);
   border-radius: 0.5rem;
   padding: 5px;
   margin: 2px;
