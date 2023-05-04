@@ -6,14 +6,16 @@ const CACHE_NAME = "rydeen-cache-v1";
 const staticAssets = [
   "./",
   "./styles.css",
-  "./src/index.js",
   "./src/darkMode.js",
+  "./src/tasks.js",
+  "./src/index.js",
   "./src/modalDelete.js",
   "./assets/icon.png",
   "./assets/dots.svg",
   "./assets/plus.svg",
   "./assets/moon.svg",
   "./assets/sun.svg",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
 ];
 
 self.addEventListener("install", async (event) => {

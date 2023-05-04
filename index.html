@@ -83,7 +83,13 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="src/darkMode.js"></script>
+    <script src="src/tasks.js"></script>
+    <script src="src/index.js"></script>
     <script src="src/modalDelete.js"></script>
   </head>
   <body>
@@ -107,9 +113,23 @@
     <main>
       <section class="row-container" style="gap: 30px">
         <div class="tabs">
-          <button class="tab active" id="tab-all">All</button>
-          <button class="tab" id="tab-star">Starred</button>
-          <button class="tab" id="tab-unstar">Unstarred</button>
+          <button
+            class="tab active"
+            id="tab-all"
+            onclick="toggleActiveStarTab(this)"
+          >
+            All
+          </button>
+          <button class="tab" id="tab-star" onclick="toggleActiveStarTab(this)">
+            Starred
+          </button>
+          <button
+            class="tab"
+            id="tab-unstar"
+            onclick="toggleActiveStarTab(this)"
+          >
+            Unstarred
+          </button>
         </div>
         <div class="modal-container">
           <button id="button-config-tasks">
@@ -117,7 +137,12 @@
           </button>
           <div id="modal-delete">
             <label>Delete selected Tasks?</label>
-            <button class="button button-delete" onclick="deleteSelectedTasks()">Delete</button>
+            <button
+              class="button button-delete"
+              onclick="deleteSelectedTasks()"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </section>
@@ -167,11 +192,11 @@
         </div>
         <span class="grid-size">Name</span>
         <span class="grid-size">Tags</span>
+        <span class="grid-size"></span>
       </section>
       <section class="tasks-list" id="tasks-list"></section>
     </main>
   </body>
-  <script src="src/index.js"></script>
   <script>
     if (localStorage.getItem("colorMode") === "dark") {
       document.getElementById("switch").checked = true;
