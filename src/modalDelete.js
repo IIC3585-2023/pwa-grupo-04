@@ -26,7 +26,7 @@ function deleteSelectedTasks() {
 }
 
 function deleteTaskIndexedDB(idTask) {
-  var request = indexedDB.open("TodoList", 5);
+  var request = indexedDB.open("TodoList", DB_VERSION);
   request.onsuccess = function (event) {
     var db = event.target.result;
     var transaction = db.transaction(["tasks"], "readwrite");
