@@ -37,7 +37,7 @@ messaging.onMessage((payload) => {
 });
 
 function sendSubscriptionIDToServer(subscription) {
-  fetch("https://pwabackendv2.onrender.com/subscribers", {
+  fetch("https://pwabackendv3.onrender.com/subscribers", {
     method: "post",
     headers: {
       Accept: "application/json",
