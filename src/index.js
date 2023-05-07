@@ -3,6 +3,17 @@ const DB_VERSION = 1;
 var request = indexedDB.open("TodoList", DB_VERSION);
 var db;
 
+window.addEventListener("load", async (e) => {
+  if ("serviceWorker" in navigator) {
+    try {
+      navigator.serviceWorker.register("serviceWorker.js");
+      console.log("SW registered");
+    } catch (error) {
+      console.log("SW failed");
+    }
+  }
+});
+
 request.onupgradeneeded = function (versionChangeEvent) {
   // The database did not previously exist, so create object stores and indexes.
   if (versionChangeEvent.oldVersion < 1) {
