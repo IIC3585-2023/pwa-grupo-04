@@ -87,10 +87,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
     <script src="src/darkMode.js"></script>
     <script src="src/tasks.js"></script>
     <script src="src/index.js"></script>
     <script src="src/modalDelete.js"></script>
+    <script src="src/indexFirebase.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -201,18 +204,5 @@
     if (localStorage.getItem("colorMode") === "dark") {
       document.getElementById("switch").checked = true;
     }
-  </script>
-  <script>
-    // https://www.freecodecamp.org/news/397b72168040/
-    window.addEventListener("load", async (e) => {
-      if ("serviceWorker" in navigator) {
-        try {
-          navigator.serviceWorker.register("serviceWorker.js");
-          console.log("SW registered");
-        } catch (error) {
-          console.log("SW failed");
-        }
-      }
-    });
   </script>
 </html>

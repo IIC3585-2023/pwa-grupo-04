@@ -52,14 +52,13 @@ async function cacheData(request) {
 
 async function networkFirst(request) {
   const cache = await caches.open(CACHE_NAME);
-
   try {
     const response = await fetch(request);
+    console.log(request);
     cache.put(request, response.clone());
     return response;
   } catch (error) {
+    console.log("error", request);
     return await cache.match(request);
   }
 }
-
-console.log("SW script loaded");
