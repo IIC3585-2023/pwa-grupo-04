@@ -1,4 +1,4 @@
-const htmlTask = (id, name, tags, isStarred) => {
+const htmlTask = (id, name, tags, isCompleted, isStarred) => {
   return `<div class="row-task" id="task-${id}">
               <input class="grid-size" type="checkbox" />
               <span class="name-task grid-size">${name}</span>
@@ -7,6 +7,13 @@ const htmlTask = (id, name, tags, isStarred) => {
                     .map((tag) => `<span class="tag-task">${tag}</span>`)
                     .join("")}
               </div>
+
+              <div class="tags-container grid-size">
+                  <span class="fa fa-star task-star ${
+                    isCompleted ? "task-star-checked" : null
+                  }" onclick="toggleCompletedTask(this, ${id})"></span>
+              </div>
+
               <div class="tags-container grid-size">
                   <span class="fa fa-star task-star ${
                     isStarred ? "task-star-checked" : null
@@ -28,6 +35,10 @@ const convertTaskForm = (form) => {
 
   formObj["tags-task"] = formObj["tags-task"].split(",");
   const selectedTab = getActiveTabName();
+  formObj["isCompleted"] = false; // Añadido x mi
+  if (selectedTab === "completed") {
+    formObj["isCompleted"] = true;
+  }
   formObj["isStarred"] = false;
   if (selectedTab === "star") {
     formObj["isStarred"] = true;
@@ -40,6 +51,7 @@ function addHtmlTask(formObj) {
     formObj["id"],
     formObj["name-task"],
     formObj["tags-task"],
+    formObj["isCompleted"], // Añadido x mi
     formObj["isStarred"]
   );
   document.getElementById("tasks-list").innerHTML += htmlRow;

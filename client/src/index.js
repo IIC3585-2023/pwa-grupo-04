@@ -21,6 +21,7 @@ request.onupgradeneeded = function (versionChangeEvent) {
     db.createObjectStore("tasks", {
       keyPath: "id",
       autoIncrement: true,
+      // complete: false,
     });
   }
 };
@@ -35,6 +36,13 @@ function printAllTasks(tabName) {
   const dataRequest = objectStore.getAll();
   dataRequest.onsuccess = function (event) {
     let tasks = event.target.result;
+    // Añadido x mi
+    if (tabName === "completed") {
+      tasks = tasks.filter((task) => task["isCompleted"]);
+    } else if (tabName === "uncompleted") {
+      tasks = tasks.filter((task) => !task["isCompleted"]);
+    }
+    // Cierre añadido x mi
     if (tabName === "star") {
       tasks = tasks.filter((task) => task["isStarred"]);
     } else if (tabName === "unstar") {
@@ -47,6 +55,7 @@ function printAllTasks(tabName) {
         task["id"],
         task["name-task"],
         task["tags-task"],
+        task["isCompleted"],  // Añadido x mi
         task["isStarred"]
       );
     });
@@ -79,6 +88,7 @@ function addTask(form) {
       var request = objectStore.add(formObj);
       request.onsuccess = function (event) {
         console.log("Task added to the database");
+        console.log(formObj["isCompleted"]);
         formObj["id"] = event.target.result;
         addHtmlTask(formObj);
       };
@@ -122,4 +132,44 @@ const toggleActiveStarTab = (htmlTabElement) => {
     }
   });
   printAllTasks(htmlTabElement.id.split("-").pop());
+};
+
+// Añadido x mi
+
+const toggleActiveCompleted = (htmlTabElement) => {
+  if (htmlTabElement.classList.contains("active")) return;
+  const tabsDiv = document.querySelector(".tabs");
+  const tabButtons = tabsDiv.querySelectorAll("button");
+  htmlTabElement.classList.add("active");
+  tabButtons.forEach((button) => {
+    if (button !== htmlTabElement) {
+      button.classList.remove("active");
+    }
+  });
+  printAllTasks(htmlTabElement.id.split("-").pop());
+};
+
+const toggleCompletedTask = (htmlCompleted, taskId) => {
+  const objectStore = db
+    .transaction(["tasks"], "readwrite")
+    .objectStore("tasks");
+
+  const dataRequest = objectStore.get(taskId);
+
+  dataRequest.onsuccess = () => {
+    const task = dataRequest.result;
+    // Change the name property
+    task.isCompleted = !task.isCompleted;
+    // Create a request to update
+    const updateRequest = objectStore.put(task);
+
+    updateRequest.onsuccess = () => {
+      const selectedTab = getActiveTabName();
+      if (selectedTab === "completed" || selectedTab === "uncompleted") {
+        document.getElementById(`task-${taskId}`).remove();
+        return;
+      }
+      htmlCompleted.classList.toggle("task-star-checked");
+    };
+  };
 };
