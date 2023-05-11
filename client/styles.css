@@ -258,8 +258,8 @@ input[type="checkbox"] {
 .row-task {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-around;
-  justify-content: center;
   width: 100%;
   padding: 10px 0;
   background-color: var(--main-input-color);
