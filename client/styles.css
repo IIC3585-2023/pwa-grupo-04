@@ -232,7 +232,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   margin: 10px 0;
   font-weight: 600;
@@ -259,7 +259,7 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   padding: 10px 0;
   background-color: var(--main-input-color);
@@ -273,7 +273,8 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -310,6 +311,10 @@ input[type="checkbox"] {
 
 .modal-container {
   position: relative;
+}
+
+.modal-container-empty {
+  width: 38px;
 }
 
 .task-star {
