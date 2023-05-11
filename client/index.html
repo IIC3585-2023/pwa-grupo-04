@@ -120,6 +120,7 @@
             class="tab active"
             id="tab-all"
             onclick="toggleActiveStarTab(this)"
+            onclick="toggleActiveCompleted(this)"
           >
             All
           </button>
@@ -132,6 +133,20 @@
             onclick="toggleActiveStarTab(this)"
           >
             Unstarred
+          </button>
+          <button
+            class="tab"
+            id="tab-completed"
+            onclick="toggleActiveCompleted(this)"
+          >
+            Completed
+          </button>
+          <button
+            class="tab"
+            id="tab-uncompleted"
+            onclick="toggleActiveCompleted(this)"
+          >
+            Uncompleted
           </button>
         </div>
         <div class="modal-container">

@@ -327,6 +327,21 @@ input[type="checkbox"] {
   color: var(--button-color) !important;
 }
 
+.task-completed {
+  font-size: 23px !important;
+  cursor: pointer;
+  color: rgba(255, 255, 255, var(--main-checkbox-opacity-color));
+  text-shadow: #000 0px 0px 1px;
+  -webkit-text-stroke-width: 0px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.task-completed-checked {
+  color: var(--button-color) !important;
+}
+
 #button-config-tasks:focus + #modal-delete {
   display: flex;
 }
