@@ -232,7 +232,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   margin: 10px 0;
   font-weight: 600;
@@ -258,7 +258,7 @@ input[type="checkbox"] {
 .row-task {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-around;
   justify-content: center;
   width: 100%;
   padding: 10px 0;
@@ -273,7 +273,7 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 
