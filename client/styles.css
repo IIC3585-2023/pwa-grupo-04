@@ -53,6 +53,7 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .navbar {
@@ -267,6 +268,7 @@ input[type="checkbox"] {
   margin: 5px 0;
   box-shadow: 0 0 5px var(--main-border-color);
   /* border-bottom: 1px solid var(--main-border-color); */
+  /* flex-wrap: wrap; */
 }
 
 .tasks-list {
