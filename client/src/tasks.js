@@ -34,7 +34,7 @@ const convertTaskForm = (form) => {
 
   formObj["tags-task"] = formObj["tags-task"].split(",");
   const selectedTab = getActiveTabName();
-  formObj["isCompleted"] = false; // Añadido x mi
+  formObj["isCompleted"] = false;
   if (selectedTab === "completed") {
     formObj["isCompleted"] = true;
   }
@@ -50,14 +50,8 @@ function addHtmlTask(formObj) {
     formObj["id"],
     formObj["name-task"],
     formObj["tags-task"],
-    formObj["isCompleted"], // Añadido x mi
+    formObj["isCompleted"],
     formObj["isStarred"]
   );
   document.getElementById("tasks-list").innerHTML += htmlRow;
 }
-
-
-// ${
-//   // isCompleted ? "task-completed-checked" : null
-
-// }

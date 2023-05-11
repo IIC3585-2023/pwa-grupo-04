@@ -21,7 +21,6 @@ request.onupgradeneeded = function (versionChangeEvent) {
     db.createObjectStore("tasks", {
       keyPath: "id",
       autoIncrement: true,
-      // complete: false,
     });
   }
 };
@@ -36,13 +35,11 @@ function printAllTasks(tabName) {
   const dataRequest = objectStore.getAll();
   dataRequest.onsuccess = function (event) {
     let tasks = event.target.result;
-    // Añadido x mi
     if (tabName === "completed") {
       tasks = tasks.filter((task) => task["isCompleted"]);
     } else if (tabName === "uncompleted") {
       tasks = tasks.filter((task) => !task["isCompleted"]);
     }
-    // Cierre añadido x mi
     if (tabName === "star") {
       tasks = tasks.filter((task) => task["isStarred"]);
     } else if (tabName === "unstar") {
@@ -55,7 +52,7 @@ function printAllTasks(tabName) {
         task["id"],
         task["name-task"],
         task["tags-task"],
-        task["isCompleted"],  // Añadido x mi
+        task["isCompleted"],
         task["isStarred"]
       );
     });
@@ -132,8 +129,6 @@ const toggleActiveStarTab = (htmlTabElement) => {
   });
   printAllTasks(htmlTabElement.id.split("-").pop());
 };
-
-// Añadido x mi
 
 const toggleActiveCompleted = (htmlTabElement) => {
   if (htmlTabElement.classList.contains("active")) return;

@@ -327,7 +327,6 @@ input[type="checkbox"] {
   color: var(--button-color) !important;
 }
 
-/* Añadido x mi */
 .task-completed {
   font-size: 23px !important;
   cursor: pointer;
@@ -342,7 +341,6 @@ input[type="checkbox"] {
 .task-completed-checked {
   color: var(--button-color) !important;
 }
-/* Cierre añadido por mi */
 
 #button-config-tasks:focus + #modal-delete {
   display: flex;
