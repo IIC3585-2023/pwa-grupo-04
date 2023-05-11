@@ -25,6 +25,17 @@ function deleteSelectedTasks() {
   }
 }
 
+function deleteSelectedTask(id) {
+  const tasksList = document.getElementById("tasks-list").children;
+  // remove task
+  for (let i = tasksList.length - 1; i >= 0; i--) {
+    if (tasksList[i].id.split("-")[1] == id){
+      deleteTaskIndexedDB(id);
+      tasksList[i].remove();
+    }
+  }
+}
+
 function deleteTaskIndexedDB(idTask) {
   var request = indexedDB.open("TodoList", DB_VERSION);
   request.onsuccess = function (event) {

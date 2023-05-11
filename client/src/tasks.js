@@ -7,7 +7,7 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                     .map((tag) => `<span class="tag-task">${tag}</span>`)
                     .join("")}
               </div>
-              <div>
+              <div class="tags-container grid-size">
                   <span class="fa fa-check-circle task-completed ${
                       isCompleted ? "task-completed-checked" : null
                     }" onclick="toggleCompletedTask(this, ${id})"></span>
@@ -18,7 +18,20 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                     isStarred ? "task-star-checked" : null
                   }" onclick="toggleStarTask(this, ${id})"></span>
               </div>
-          </div>`;
+              <div class="modal-container">
+                <button id="button-config-tasks">
+                  <img src="assets/dots.svg" alt="dots" class="icon-size" />
+                </button>
+                <div id="modal-delete">
+                  <label>Delete this Task?</label>
+                  <button
+                    class="button button-delete"
+                    onclick="deleteSelectedTask(${id})"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>`;
 };
 
 const verifyTaskForm = (formObj) => {
