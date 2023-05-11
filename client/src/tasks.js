@@ -7,11 +7,10 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                     .map((tag) => `<span class="tag-task">${tag}</span>`)
                     .join("")}
               </div>
-
-              <div class="tags-container grid-size">
-                  <span class="fa fa-star task-star ${
-                    isCompleted ? "task-star-checked" : null
-                  }" onclick="toggleCompletedTask(this, ${id})"></span>
+              <div>
+                  <span class="fa fa-check-circle task-completed ${
+                      isCompleted ? "task-completed-checked" : null
+                    }" onclick="toggleCompletedTask(this, ${id})"></span>
               </div>
 
               <div class="tags-container grid-size">
@@ -56,3 +55,9 @@ function addHtmlTask(formObj) {
   );
   document.getElementById("tasks-list").innerHTML += htmlRow;
 }
+
+
+// ${
+//   // isCompleted ? "task-completed-checked" : null
+
+// }

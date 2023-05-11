@@ -88,7 +88,6 @@ function addTask(form) {
       var request = objectStore.add(formObj);
       request.onsuccess = function (event) {
         console.log("Task added to the database");
-        console.log(formObj["isCompleted"]);
         formObj["id"] = event.target.result;
         addHtmlTask(formObj);
       };
@@ -169,7 +168,7 @@ const toggleCompletedTask = (htmlCompleted, taskId) => {
         document.getElementById(`task-${taskId}`).remove();
         return;
       }
-      htmlCompleted.classList.toggle("task-star-checked");
+      htmlCompleted.classList.toggle("task-completed-checked");
     };
   };
 };
