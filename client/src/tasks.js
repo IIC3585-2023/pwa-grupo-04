@@ -23,7 +23,7 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                   <img src="assets/dots.svg" alt="dots" class="icon-size" />
                 </button>
                 <div id="modal-delete">
-                  <label>Delete selected Task?</label>
+                  <label>Delete this Task?</label>
                   <button
                     class="button button-delete"
                     onclick="deleteSelectedTask(${id})"

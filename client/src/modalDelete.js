@@ -30,7 +30,7 @@ function deleteSelectedTask(id) {
   // remove task
   for (let i = tasksList.length - 1; i >= 0; i--) {
     if (tasksList[i].id.split("-")[1] == id){
-      deleteTaskIndexedDB(i);
+      deleteTaskIndexedDB(id);
       tasksList[i].remove();
     }
   }
