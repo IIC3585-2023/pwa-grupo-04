@@ -18,7 +18,20 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                     isStarred ? "task-star-checked" : null
                   }" onclick="toggleStarTask(this, ${id})"></span>
               </div>
-          </div>`;
+              <div class="modal-container">
+                <button id="button-config-tasks">
+                  <img src="assets/dots.svg" alt="dots" class="icon-size" />
+                </button>
+                <div id="modal-delete">
+                  <label>Delete selected Task?</label>
+                  <button
+                    class="button button-delete"
+                    onclick="deleteSelectedTask(${id})"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>`;
 };
 
 const verifyTaskForm = (formObj) => {

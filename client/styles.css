@@ -359,6 +359,7 @@ input[type="checkbox"] {
   border-radius: 0.5rem;
   border: 1px solid var(--main-border-color);
   box-shadow: 0 0 10px var(--main-border-color);
+  z-index: 100; /* Modal in front of the other elements*/
 }
 
 #modal-delete:hover {
