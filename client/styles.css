@@ -53,7 +53,6 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: wrap; */
 }
 
 .navbar {
@@ -244,6 +243,7 @@ input:checked + .slider:before {
 
 #form-add-task {
   margin: 20px 0;
+  flex-wrap: wrap;
 }
 
 input[type="checkbox"]:not(:checked) {
@@ -269,7 +269,6 @@ input[type="checkbox"] {
   margin: 5px 0;
   box-shadow: 0 0 5px var(--main-border-color);
   /* border-bottom: 1px solid var(--main-border-color); */
-  /* flex-wrap: wrap; */
 }
 
 .tasks-list {
@@ -299,7 +298,6 @@ input[type="checkbox"] {
   margin: 2px;
   background-color: var(--tag-color);
   font-size: small;
-  color: whitesmoke;
 }
 
 .grid-size {
@@ -309,6 +307,10 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: center;
   text-align: center;
+  hyphens: auto;
+  border-radius: 0.5rem;
+  margin-left: 0.125rem; /* 2px */
+  margin-right: 0.125rem; /* 2px */
 }
 
 .modal-container {
