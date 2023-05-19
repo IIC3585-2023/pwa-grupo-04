@@ -9,8 +9,8 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
               </div>
               <div class="tags-container grid-size">
                   <span class="fa fa-check-circle task-completed ${
-                      isCompleted ? "task-completed-checked" : null
-                    }" onclick="toggleCompletedTask(this, ${id})"></span>
+                    isCompleted ? "task-completed-checked" : null
+                  }" onclick="toggleCompletedTask(this, ${id})"></span>
               </div>
 
               <div class="tags-container grid-size">
@@ -19,10 +19,10 @@ const htmlTask = (id, name, tags, isCompleted, isStarred) => {
                   }" onclick="toggleStarTask(this, ${id})"></span>
               </div>
               <div class="modal-container">
-                <button id="button-config-tasks">
+                <button id="button-config-tasks" onclick="showModal(${id})">
                   <img src="assets/dots.svg" alt="dots" class="icon-size" />
                 </button>
-                <div id="modal-delete">
+                <div class="modal-delete" id="modal-delete-${id}">
                   <label>Delete this Task?</label>
                   <button
                     class="button button-delete"
