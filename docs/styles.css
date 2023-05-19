@@ -294,6 +294,7 @@ input[type="checkbox"] {
   justify-content: center;
   border: 2px solid var(--main-border-color);
   border-radius: 0.5rem;
+  color: var(--dark-text-color);
   padding: 5px;
   margin: 2px;
   background-color: var(--tag-color);
@@ -351,11 +352,11 @@ input[type="checkbox"] {
   color: var(--button-color) !important;
 }
 
-#button-config-tasks:focus + #modal-delete {
+#button-config-tasks:focus + .modal-delete {
   display: flex;
 }
 
-#modal-delete {
+.modal-delete {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -371,11 +372,11 @@ input[type="checkbox"] {
   z-index: 100; /* Modal in front of the other elements*/
 }
 
-#modal-delete:hover {
+.modal-delete:hover {
   display: flex;
 }
 
-#modal-delete:focus-within {
+.modal-delete:focus-within {
   display: flex;
 }
 

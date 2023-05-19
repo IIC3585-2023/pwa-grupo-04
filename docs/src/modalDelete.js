@@ -1,3 +1,13 @@
+function showModal(id) {
+  const modal = document.getElementById(`modal-delete-${id}`);
+  console.log(modal.style.display);
+  if (modal.style.display === "flex") {
+    modal.style.display = "none";
+  } else {
+    modal.style.display = "flex";
+  }
+}
+
 function selectAllTasks() {
   const selectAll = document.getElementById("select-all");
   const tasksList = document.getElementById("tasks-list").children;
@@ -29,7 +39,7 @@ function deleteSelectedTask(id) {
   const tasksList = document.getElementById("tasks-list").children;
   // remove task
   for (let i = tasksList.length - 1; i >= 0; i--) {
-    if (tasksList[i].id.split("-")[1] == id){
+    if (tasksList[i].id.split("-")[1] == id) {
       deleteTaskIndexedDB(id);
       tasksList[i].remove();
     }
