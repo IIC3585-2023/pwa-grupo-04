@@ -40,6 +40,7 @@ const staticAssets = [
   "./src/darkMode.js",
   "./src/tasks.js",
   "./src/index.js",
+  "./src/swRegistration.js",
   "./src/modalDelete.js",
   "./assets/icon.png",
   "./assets/dots.svg",
