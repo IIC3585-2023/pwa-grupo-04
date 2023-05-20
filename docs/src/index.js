@@ -28,8 +28,8 @@ window.addEventListener("load", async (e) => {
         .then(() => {
           console.log("Notifications allowed");
           const token = messaging.getToken({
-            serviceWorkerRegistration: serviceWorkerRegistration,
             vapidKey: "",
+            serviceWorkerRegistration,
           });
           return token;
         })
@@ -201,15 +201,15 @@ const toggleCompletedTask = (htmlCompleted, taskId) => {
 };
 
 // FCM functions
-messaging.onMessage((payload) => {
-  const notification = JSON.parse(payload.data.notification);
-  const notificationTitle = notification.title;
-  const notificationOptions = {
-    body: notification.body,
-  };
-  //Show the notification :)
-  return new Notification(notificationTitle, notificationOptions);
-});
+// messaging.onMessage((payload) => {
+//   const notification = JSON.parse(payload.data.notification);
+//   const notificationTitle = notification.title;
+//   const notificationOptions = {
+//     body: notification.body,
+//   };
+//   //Show the notification :)
+//   return new Notification(notificationTitle, notificationOptions);
+// });
 
 function sendSubscriptionIDToServer(subscription) {
   fetch("https://pwabackendv3.onrender.com/subscribers", {
