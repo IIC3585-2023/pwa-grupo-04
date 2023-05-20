@@ -26,7 +26,6 @@ messaging
   });
 
 messaging.onMessage((payload) => {
-  console.log("hola");
   const notification = JSON.parse(payload.data.notification);
   const notificationTitle = notification.title;
   const notificationOptions = {
