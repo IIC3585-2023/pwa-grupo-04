@@ -27,7 +27,10 @@ window.addEventListener("load", async (e) => {
         .requestPermission()
         .then(() => {
           console.log("Notifications allowed");
-          const token = messaging.getToken(serviceWorkerRegistration);
+          const token = messaging.getToken({
+            serviceWorkerRegistration: serviceWorkerRegistration,
+            vapidKey: "",
+          });
           return token;
         })
         .then((token) => {
