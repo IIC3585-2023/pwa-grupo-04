@@ -1,6 +1,5 @@
 function showModal(id) {
   const modal = document.getElementById(`modal-delete-${id}`);
-  console.log(modal.style.display);
   if (modal.style.display === "flex") {
     modal.style.display = "none";
   } else {
