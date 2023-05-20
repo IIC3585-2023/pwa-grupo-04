@@ -1,6 +1,27 @@
 // https://www.freecodecamp.org/news/397b72168040/
 // https://medium.com/@jranand_io/7705bcd3d6cb
 
+// FCM handlers
+importScripts("https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/6.6.2/firebase-messaging.js");
+
+firebase.initializeApp({
+  messagingSenderId: "945142036196",
+});
+const messaging = firebase.messaging();
+messaging.setBackgroundMessageHandler((payload) => {
+  const notification = JSON.parse(payload.data.notification);
+  const notificationTitle = notification.title;
+  const notificationOptions = {
+    body: notification.body,
+  };
+  //Show the notification :)
+  return self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
+});
+
 const CACHE_NAME = "rydeen-cache-v1";
 
 const staticAssets = [
