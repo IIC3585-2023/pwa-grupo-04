@@ -1,10 +1,17 @@
 // https://github.com/alamshertiwana/to-do-list-pwa/blob/master/index.html
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import {
+  getMessaging,
+  getToken,
+  onMessage,
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js";
+
 const DB_VERSION = 1;
 var request = indexedDB.open("TodoList", DB_VERSION);
 var db;
 
 // FCM config
-const config = {
+const firebaseConfig = {
   apiKey: "AIzaSyBPfK1YFA54QJQQoza0BT50_0JOogFHdaA",
   authDomain: "test-6fdb8.firebaseapp.com",
   projectId: "test-6fdb8",
@@ -14,34 +21,22 @@ const config = {
   measurementId: "G-SNYKK2G41G",
 };
 
-firebase.initializeApp(config);
-const messaging = firebase.messaging();
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
 
 window.addEventListener("load", async (e) => {
   if ("serviceWorker" in navigator) {
     try {
-      const serviceWorkerRegistration =
-        navigator.serviceWorker.register("./serviceWorker.js");
-      console.log("SW registered");
-      messaging
-        .requestPermission()
-        .then(() => {
-          console.log("Notifications allowed");
-          const token = messaging.getToken({
-            vapidKey: "",
-            serviceWorkerRegistration,
-          });
-          return token;
-        })
-        .then((token) => {
-          sendSubscriptionIDToServer(token);
-          console.log("Sending token to api: ", token);
-        })
-        .catch((err) => {
-          console.log("No permission to send push", err);
+      navigator.serviceWorker
+        .register("./serviceWorker.js")
+        .then((swRegistration) => {
+          console.log("SW registered");
+          subscribeToPushNotifications(swRegistration);
         });
     } catch (error) {
-      console.log("SW failed");
+      console.log("SW failed", error);
     }
   }
 });
@@ -201,15 +196,29 @@ const toggleCompletedTask = (htmlCompleted, taskId) => {
 };
 
 // FCM functions
-// messaging.onMessage((payload) => {
-//   const notification = JSON.parse(payload.data.notification);
-//   const notificationTitle = notification.title;
-//   const notificationOptions = {
-//     body: notification.body,
-//   };
-//   //Show the notification :)
-//   return new Notification(notificationTitle, notificationOptions);
-// });
+
+const subscribeToPushNotifications = (swRegistration) => {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notifications allowed");
+      getToken(messaging, {
+        vapidKey: "",
+        serviceWorkerRegistration: swRegistration,
+      }).then((token) => sendSubscriptionIDToServer(token));
+    }
+  });
+};
+const handlePushNotificationsInForeground = () => {
+  onMessage(messaging, (payload) => {
+    const notification = JSON.parse(payload.data.notification);
+    const notificationTitle = notification.title;
+    const notificationOptions = {
+      body: notification.body,
+    };
+    //Show the notification :)
+    return new Notification(notificationTitle, notificationOptions);
+  });
+};
 
 function sendSubscriptionIDToServer(subscription) {
   fetch("https://pwabackendv3.onrender.com/subscribers", {
@@ -220,4 +229,5 @@ function sendSubscriptionIDToServer(subscription) {
     },
     body: JSON.stringify({ subscriptionid: subscription }),
   });
+  handlePushNotificationsInForeground();
 }
