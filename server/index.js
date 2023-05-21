@@ -36,7 +36,7 @@ var fcm = new FCM(serverKey);
 app.get("/push-1", function (req, res) {
   var message = {
     registration_ids: subscribers,
-    data: { notification: { title: "SIUUUUUUUU", body: "Grande Messi" } },
+    data: { notification: { title: "AVISO DE MANTENCIÓN", body: "la app estará en mantención en los proximos 10 minutos" } },
   };
   fcm.send(message, function (err, response) {
     if (err) {
@@ -54,8 +54,8 @@ app.get("/push-2", function (req, res) {
     registration_ids: subscribers,
     data: {
       notification: {
-        title: "Feliz día de las madres",
-        body: "Te desea Falabella",
+        title: "TEST",
+        body: "Hola gente de Web Avanzado",
       },
     },
   };
